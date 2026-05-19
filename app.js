@@ -31,9 +31,9 @@ async function loadComponents() {
 
 
 const STEPS = ['cpu','gpu','ram','motherboard','storage','psu','case','cooling'];
-const TIERS  = ['all','ultra','high','mid','budget'];
-const TIER_COLORS = {ultra:'#ff4444',high:'#ff8c00',mid:'#00d4ff',budget:'#22c55e'};
-const TIER_UA     = {ultra:'Ultra',high:'High-End',mid:'Mid-Range',budget:'Budget'};
+const TIERS  = ['all','ultra','high','mid','budget','entry'];
+const TIER_COLORS = {ultra:'#ff4444',high:'#ff8c00',mid:'#00d4ff',budget:'#22c55e',entry:'#94a3b8'};
+const TIER_UA     = {ultra:'Ultra',high:'High-End',mid:'Mid-Range',budget:'Budget',entry:'Entry'};
 
 const PRESETS = [
   {
@@ -227,7 +227,7 @@ const CAT_FILTERS = {
   cpu: [
     { key:'brand',  label:'Бренд',  values:['AMD','Intel'] },
     { key:'socket', label:'Сокет',  values:['AM5','LGA1700'] },
-    { key:'tier',   label:'Клас',   values:['ultra','high','mid','budget'], colors:{ultra:'#ff4444',high:'#ff8c00',mid:'#00d4ff',budget:'#22c55e'} },
+    { key:'tier',   label:'Клас',   values:['ultra','high','mid','budget','entry'], colors:{ultra:'#ff4444',high:'#ff8c00',mid:'#00d4ff',budget:'#22c55e',entry:'#94a3b8'} },
   ],
   gpu: [
     { key:'brand', label:'Бренд', values:['NVIDIA','AMD','Intel'] },
@@ -358,7 +358,7 @@ function renderAdminPage() {
     if (f === 'tier') return `
       <div><label style="font-size:10px;color:#64748b;letter-spacing:.1em;display:block;margin-bottom:4px">${fieldLabel[f] || f}</label>
       <select id="af_${f}" style="${inputStyle}">
-        ${['ultra','high','mid','budget'].map(t => `<option value="${t}" ${val===t?'selected':''}>${t}</option>`).join('')}
+        ${['ultra','high','mid','budget','entry'].map(t => `<option value="${t}" ${val===t?'selected':''}>${t}</option>`).join('')}
       </select></div>`;
     return `
       <div><label style="font-size:10px;color:#64748b;letter-spacing:.1em;display:block;margin-bottom:4px">${fieldLabel[f] || f}</label>
